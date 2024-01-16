@@ -1,0 +1,16 @@
+GridWorld is a 5x5 matrix. Index starts from 0
+
+State: The cell number calculated row and column wise
+
+Actions: Up, Down, Left, Right
+
+Goal State: Cell No 44
+
+Obstacles: Cells 22 and 32 are walls. Cell 42 is Water
+
+Transition probabilities: with 0.8 transitions takes the next action correctly, with 0.05 takes either a left or right of the intended action (so total 0.1),
+                          with 0.1 temporarily breaks and stays in the current cell. 
+
+Rewards: 0 for each cell, +10 for the goal state and -10 for the water state. 
+
+Initial State: Cell 00
