@@ -6,10 +6,10 @@ return. We can construct an estimate of J(π), J^(π), by averaging the discount
 
 2. RL 2: Implement the Evolution Strategy method on the Cartpole Domain.
 
-The Evolution Strategy (ES) method for policy search is a simple BBO algorithm that has achieved remarkable
+  The Evolution Strategy (ES) method for policy search is a simple BBO algorithm that has achieved remarkable
 performance on domains like playing Atari games and controlling simulated MuJoCo robots. Here in the implementation of the
 version of ES originally introduced in the work of Salimans et al. (2017) - https://arxiv.org/abs/1703.03864
 
-The Cartpole domain  consists of a pole attached to a cart that can move horizontally along a track. The pole is placed upright 
+  The Cartpole domain  consists of a pole attached to a cart that can move horizontally along a track. The pole is placed upright 
 on the cart, and the goal of the RL agent is to balance the pole by moving the cart to the left or right.
 
