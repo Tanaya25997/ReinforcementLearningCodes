@@ -1,0 +1,41 @@
+• State: s = (x, v, ω, ω˙ ), where x ∈ R is the horizontal position of the cart along the track, v ∈ R is the cart
+velocity, ω ∈ R is the pole angle (in radians), and ω˙ ∈ R is the pole’s angular velocity.
+  
+• Actions: a ∈ {left, right}. These actions determine the force that will be applied to the cart and are mapped,
+respectively, to numerical force values: F= − 10 if the action is left, and F=10 if the action is right.
+  
+• Dynamics: The dynamics are deterministic—taking action a in state s always produces the same next state, s′.
+Thus, p(s, a, s′) ∈ {0, 1}. To characterize the dynamics, we first need to define the following constants:
+
+g = 9.8 (gravity)
+mc = 1.0 (cart’s mass)
+mp = 0.1 (pole’s mass)
+mt = mc + mp (total mass)
+l = 0.5 (pole’s length)
+τ = 0.02 (agent executes an action every 0.02 seconds)
+  
+Recall that a force F=10 is applied to the cart if the action is a=right, and F=−10 if a=left. To specify this
+domain’s dynamics (the rules used to determine the next state) we first define the following intermediate values:
+
+b = (F + mp* l* ωt^(2) *sin(ωt))/mt
+
+c = (g*sin(ωt) − cos(ωt)*b)/l*(4/3 - (mp cos(ωt)^(2)/mt))
+
+d = b − (mp*l*c*cos(ωt)/mt)
+  
+Based on these quantities, the next state can be computed by:
+xt+1 ← xt + τvt
+vt+1 ← vt + τ d
+ωt+1 ← ωt + τ ω˙ t
+ω˙ t+1 ← ω˙ t + τ c
+  
+• Terminal States: If ω < − π/15 radians (−12◦) or ω > π/15 radians (12◦), then the state is terminal because the pole
+fell. If the cart position is x < −2.4 or x > 2.4, the state is also terminal since the center of the cart just reached
+one of the edges of the simulated environment. Episodes may also terminate due to a timeout; in particular,
+episodes terminate if the agent runs for more than 500 time steps.
+  
+• Rewards: Rt = 1 always.
+  
+• Discount: γ = 1.0.
+  
+• Initial State: S0 = (0, 0, 0, 0).
